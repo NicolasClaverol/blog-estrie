@@ -1,14 +1,14 @@
 <?php
-session_start();
-require_once 'config/database.php';
+require_once 'includes/session.php';
+require_once 'includes/database.php';
 
 $page_title = "Inscription - Blog Estrie";
 $errors = [];
 $success = false;
 
-// Si l'utilisateur est déjà connecté, rediriger vers l'accueil
-if (isset($_SESSION['user_id'])) {
-    header('Location: /index.php');
+// Si déjà connecté, rediriger vers le profil
+if (isLoggedIn()) {
+    header('Location: /profile.php');
     exit;
 }
 
@@ -44,32 +44,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Vérifier si l'username ou l'email existe déjà
     if (empty($errors)) {
-        try {
-            $pdo = getConnection();
-            
-            $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
-            $stmt->execute([$username, $email]);
-            
-            if ($stmt->fetch()) {
-                $errors[] = "Ce nom d'utilisateur ou cet email est déjà utilisé.";
-            }
-        } catch (PDOException $e) {
-            $errors[] = "Erreur lors de la vérification : " . $e->getMessage();
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
+        $stmt->execute([$username, $email]);
+        
+        if ($stmt->fetch()) {
+            $errors[] = "Ce nom d'utilisateur ou cet email est déjà utilisé.";
         }
     }
     
     // Insertion dans la base de données
     if (empty($errors)) {
-        try {
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            
-            $stmt = $pdo->prepare("INSERT INTO users (username, email, password, is_admin) VALUES (?, ?, ?, 0)");
-            $stmt->execute([$username, $email, $hashed_password]);
-            
-            $success = true;
-        } catch (PDOException $e) {
-            $errors[] = "Erreur lors de l'inscription : " . $e->getMessage();
-        }
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        
+        $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        $stmt->execute([$username, $email, $hashed_password]);
+        
+        $success = true;
     }
 }
 
@@ -174,12 +164,28 @@ require_once 'includes/header.php';
 <?php require_once 'includes/footer.php'; ?>
 ```
 
-**Sauvegardez** avec **Ctrl + S**.
+---
+
+## 📝 Résumé des modifications
+
+### **Changements effectués :**
+
+1. **Ligne 2-3** : 
+   - ❌ `require_once 'config/database.php';`
+   - ✅ `require_once 'includes/session.php';`
+   - ✅ `require_once 'includes/database.php';`
+
+2. **Ligne 9-12** :
+   - ❌ `if (isset($_SESSION['user_id']))`
+   - ✅ `if (isLoggedIn())`
+   - Redirection vers `/profile.php` au lieu de `/index.php`
+
+3. **Ligne 47-53** : Suppression du `try/catch` et de `getConnection()` (simplifié car `$pdo` est maintenant global)
+
+4. **Ligne 64** : Suppression de `, is_admin` et de `, 0` dans l'INSERT (simplifié)
 
 ---
 
-## 🌐 **Tester la page d'inscription**
-
-Dans votre navigateur, allez sur :
+## ✅ Teste maintenant
 ```
 http://localhost:8000/register.php

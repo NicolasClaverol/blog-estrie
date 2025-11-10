@@ -1,50 +1,39 @@
 <?php
-session_start();
-require_once 'config/database.php';
+require_once 'includes/session.php';
+require_once 'includes/database.php';
 
 $page_title = "Connexion - Blog Estrie";
 $error = '';
 
-// Si l'utilisateur est déjà connecté, rediriger vers l'accueil
-if (isset($_SESSION['user_id'])) {
-    header('Location: /index.php');
+// Si déjà connecté, rediriger vers le profil
+if (isLoggedIn()) {
+    header('Location: /profile.php');
     exit;
 }
 
 // Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
+    $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     
-    if (empty($username) || empty($password)) {
-        $error = "Veuillez remplir tous les champs.";
+    if (empty($email) || empty($password)) {
+        $error = 'Tous les champs sont obligatoires.';
     } else {
-        try {
-            $pdo = getConnection();
+        $stmt = $pdo->prepare('SELECT id, username, email, password FROM users WHERE email = ?');
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+        
+        if ($user && password_verify($password, $user['password'])) {
+            // Créer la session
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
             
-            // Rechercher l'utilisateur
-            $stmt = $pdo->prepare("SELECT id, username, password, is_admin FROM users WHERE username = ?");
-            $stmt->execute([$username]);
-            $user = $stmt->fetch();
-            
-            if ($user && password_verify($password, $user['password'])) {
-                // Connexion réussie
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['is_admin'] = (bool)$user['is_admin'];
-                
-                // Rediriger vers la page admin si admin, sinon accueil
-                if ($_SESSION['is_admin']) {
-                    header('Location: /admin/index.php');
-                } else {
-                    header('Location: /index.php');
-                }
-                exit;
-            } else {
-                $error = "Nom d'utilisateur ou mot de passe incorrect.";
-            }
-        } catch (PDOException $e) {
-            $error = "Erreur de connexion : " . $e->getMessage();
+            setFlashMessage('Connexion réussie ! Bienvenue ' . $user['username']);
+            header('Location: /profile.php');
+            exit;
+        } else {
+            $error = 'Email ou mot de passe incorrect.';
         }
     }
 }
@@ -70,14 +59,14 @@ require_once 'includes/header.php';
                     
                     <form method="POST" action="">
                         <div class="mb-3">
-                            <label for="username" class="form-label">
-                                <i class="fas fa-user"></i> Nom d'utilisateur
+                            <label for="email" class="form-label">
+                                <i class="fas fa-envelope"></i> Email
                             </label>
-                            <input type="text" 
+                            <input type="email" 
                                    class="form-control" 
-                                   id="username" 
-                                   name="username" 
-                                   value="<?php echo htmlspecialchars($username ?? ''); ?>"
+                                   id="email" 
+                                   name="email" 
+                                   value="<?php echo htmlspecialchars($email ?? ''); ?>"
                                    required 
                                    autofocus>
                         </div>
