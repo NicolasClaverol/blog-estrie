@@ -1,0 +1,33 @@
+// Personnalisation des couleurs Bootstrap pour le thème Estrie
+// Couleurs inspirées des paysages de l'Estrie
+
+// Couleurs principales
+$primary: #2C5F2D;       // Vert forêt de l'Estrie
+$secondary: #8B4513;     // Brun automnal
+$success: #4A7C59;       // Vert nature
+$info: #5B9BD5;          // Bleu lac
+$warning: #D4A574;       // Ocre automne
+$danger: #A52A2A;        // Rouge feuille d'érable
+$light: #F8F9FA;         // Blanc neige
+$dark: #2C3E50;          // Gris montagne
+
+// Importer Bootstrap avec nos couleurs personnalisées
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Styles personnalisés supplémentaires
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.card {
+    transition: transform 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0,0,0,.2);
+    }
+}
