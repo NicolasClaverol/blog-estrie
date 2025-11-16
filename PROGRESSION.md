@@ -72,43 +72,52 @@ npx sass --quiet-deps --watch assets/scss/custom.scss:assets/css/style.css
   - ✅ Système de messages flash
   - ✅ Protection des pages avec `requireLogin()`
   - ✅ Navigation dynamique selon l'état de connexion
+- ✅ Étape 13 : Page de déconnexion (`logout.php`) - Déjà fait à l'étape 12
+- ✅ Étape 14 : Création du compte administrateur
+  - ✅ Compte admin créé : `admin@blogestrie.com` / `password`
+  - ✅ Colonne `is_admin` dans la table users
+  - ✅ Fonctions `isAdmin()` et `requireAdmin()` ajoutées
+  - ✅ Protection du dashboard avec `requireAdmin()`
+  - ✅ Badge "Admin" dans le header
+  - ✅ Menu Admin avec dropdown (Dashboard, Articles, Projets)
+  - ✅ Tests de protection réussis
 
 ### PARTIE 4 : GESTION DES ARTICLES ⏳ (0%)
-- ⏳ Étape 13 : Page admin - liste des articles
-- ⏳ Étape 14 : Formulaire création d'article
-- ⏳ Étape 15 : Upload d'images pour articles
-- ⏳ Étape 16 : Intégration TinyMCE (éditeur)
-- ⏳ Étape 17 : Modification d'article
-- ⏳ Étape 18 : Suppression d'article
-- ⏳ Étape 19 : Affichage public des articles
+- ⏳ Étape 15 : Page admin - liste des articles
+- ⏳ Étape 16 : Formulaire création d'article
+- ⏳ Étape 17 : Upload d'images pour articles
+- ⏳ Étape 18 : Intégration TinyMCE (éditeur)
+- ⏳ Étape 19 : Modification d'article
+- ⏳ Étape 20 : Suppression d'article
+- ⏳ Étape 21 : Affichage public des articles
 
 ### PARTIE 5 : GESTION DES PROJETS ⏳ (0%)
-- ⏳ Étape 20 : Page admin - liste des projets
-- ⏳ Étape 21 : Formulaire création de projet
-- ⏳ Étape 22 : Upload d'images pour projets
-- ⏳ Étape 23 : Modification de projet
-- ⏳ Étape 24 : Suppression de projet
-- ⏳ Étape 25 : Affichage public des projets (portfolio)
+- ⏳ Étape 22 : Page admin - liste des projets
+- ⏳ Étape 23 : Formulaire création de projet
+- ⏳ Étape 24 : Upload d'images pour projets
+- ⏳ Étape 25 : Modification de projet
+- ⏳ Étape 26 : Suppression de projet
+- ⏳ Étape 27 : Affichage public des projets (portfolio)
 
 ### PARTIE 6 : COMMENTAIRES ⏳ (Optionnel)
-- ⏳ Étape 26 : Système de commentaires sous les articles
-- ⏳ Étape 27 : Modération des commentaires
+- ⏳ Étape 28 : Système de commentaires sous les articles
+- ⏳ Étape 29 : Modération des commentaires
 
 ### PARTIE 7 : FINALISATION ⏳ (0%)
-- ⏳ Étape 28 : Tests et corrections de bugs
-- ⏳ Étape 29 : Optimisation du code
-- ⏳ Étape 30 : Push final sur GitHub
-- ⏳ Étape 31 : Enregistrement vidéo de démonstration
-- ⏳ Étape 32 : Rédaction du README.md
+- ⏳ Étape 30 : Tests et corrections de bugs
+- ⏳ Étape 31 : Optimisation du code
+- ⏳ Étape 32 : Push final sur GitHub
+- ⏳ Étape 33 : Enregistrement vidéo de démonstration
+- ⏳ Étape 34 : Rédaction du README.md
 
 ---
 
 ## 📊 Progression globale
 ```
-[████████████████░░░░] 60% complété
+[█████████████████░░░] 65% complété
 ```
 
-**Temps estimé restant** : 12-15 heures
+**Temps estimé restant** : 10-12 heures
 
 ---
 
@@ -154,17 +163,17 @@ blog-estrie/
 ├── includes/
 │   ├── header.php
 │   ├── footer.php
-│   ├── session.php ✅ NOUVEAU
-│   └── database.php ✅ NOUVEAU
+│   ├── session.php ✅
+│   └── database.php ✅
 ├── admin/
-│   └── dashboard.php ✅ NOUVEAU
+│   └── dashboard.php ✅
 ├── uploads/ (pour les images)
 ├── node_modules/ (ignoré par Git)
 ├── index.php
 ├── register.php
 ├── login.php
-├── profile.php ✅ NOUVEAU
-├── logout.php ✅ NOUVEAU
+├── profile.php ✅
+├── logout.php ✅
 ├── adminer.php
 ├── test_connexion.php
 ├── PROGRESSION.md
@@ -175,15 +184,15 @@ blog-estrie/
 
 ### Fichiers créés jusqu'à présent
 - ✅ `includes/database.php` - Connexion BDD (migration depuis config/)
-- ✅ `includes/session.php` - Gestion centralisée des sessions
-- ✅ `includes/header.php` - En-tête réutilisable avec navigation dynamique
+- ✅ `includes/session.php` - Gestion centralisée des sessions + droits admin
+- ✅ `includes/header.php` - Navigation dynamique avec menu Admin
 - ✅ `includes/footer.php` - Pied de page réutilisable
 - ✅ `index.php` - Page d'accueil
 - ✅ `register.php` - Page d'inscription
-- ✅ `login.php` - Page de connexion (connexion par email)
+- ✅ `login.php` - Page de connexion (avec gestion is_admin)
 - ✅ `profile.php` - Page profil utilisateur (protégée)
 - ✅ `logout.php` - Page de déconnexion
-- ✅ `admin/dashboard.php` - Tableau de bord admin (protégé)
+- ✅ `admin/dashboard.php` - Tableau de bord admin (protégé par requireAdmin)
 - ✅ `test_connexion.php` - Test de connexion BDD
 - ✅ `assets/scss/custom.scss` - Styles personnalisés
 - ✅ `assets/css/style.css` - CSS compilé
@@ -257,6 +266,10 @@ blog-estrie/
 - **Problème** : Fichier `config/database.php` utilisé mais structure incohérente
 - **Solution** : Créer `includes/database.php` et mettre à jour tous les fichiers (login.php, register.php) pour utiliser le nouveau chemin
 
+### No database selected (ERROR 1046)
+- **Problème** : Erreur lors de l'insertion du compte admin
+- **Solution** : Toujours exécuter `USE blog_estrie;` avant les requêtes SQL
+
 ---
 
 ## 🔐 Git & GitHub
@@ -280,7 +293,9 @@ git push
 1. ✅ "Initial commit: Fondations, design et inscription"
 2. ✅ "Ajout documentation de progression du projet"
 3. ✅ "Étape 11 terminée : page de connexion fonctionnelle"
-4. ✅ "Étape 12 terminée : Système de sessions et protection des pages admin" *(à faire)*
+4. ✅ "Étape 12 terminée : Système de sessions et protection des pages admin"
+5. ✅ "Mise à jour PROGRESSION.md - Étape 12 documentée"
+6. ✅ "Étape 14 terminée : Système de droits administrateur" *(à faire)*
 
 ---
 
@@ -298,14 +313,15 @@ git push
 ## 📝 Notes pour la suite
 
 ### Prochaines étapes immédiates
-- [ ] Étape 13 : Page admin - liste des articles
-- [ ] Étape 14 : Formulaire de création d'article
-- [ ] Étape 15 : Upload et gestion des images
+- [ ] Étape 15 : Page admin - liste des articles (`admin/articles.php`)
+- [ ] Étape 16 : Formulaire de création d'article
+- [ ] Étape 17 : Upload et gestion des images
 
 ### Fonctionnalités à implémenter
 - [x] Protection des pages admin (vérification session)
 - [x] Système de messages flash
 - [x] Navigation dynamique selon l'état de connexion
+- [x] Gestion des droits administrateur
 - [ ] Système CRUD complet pour les articles
 - [ ] Système CRUD complet pour les projets
 - [ ] Upload et gestion des images
@@ -326,6 +342,7 @@ git push
 ### Fonctionnalités obligatoires
 - ✅ Connexion / Déconnexion
 - ✅ Espace administrateur protégé
+- ✅ Gestion des droits (admin vs utilisateur)
 - ⏳ Création / Modification / Suppression d'articles
 - ⏳ Création / Modification / Suppression de projets
 - ⏳ Affichage public des articles et projets
@@ -346,10 +363,11 @@ git push
 
 ---
 
-## 🔒 Système de sessions (Étape 12)
+## 🔒 Système d'authentification et sessions
 
-### Fichiers créés
-- `includes/session.php` : Gestion centralisée des sessions
+### Architecture mise en place
+- `includes/session.php` : Gestion centralisée des sessions et droits
+- `includes/database.php` : Connexion PDO à MySQL
 - `profile.php` : Page profil utilisateur protégée
 - `logout.php` : Déconnexion sécurisée
 - `admin/dashboard.php` : Tableau de bord admin
@@ -359,9 +377,17 @@ git push
 - `getUserId()` : Récupère l'ID de l'utilisateur connecté
 - `getUsername()` : Récupère le nom d'utilisateur
 - `getUserEmail()` : Récupère l'email de l'utilisateur
+- `isAdmin()` : Vérifie si l'utilisateur est administrateur
 - `requireLogin()` : Protège une page (redirection si non connecté)
+- `requireAdmin()` : Protège une page admin (redirection si non admin)
 - `setFlashMessage($message, $type)` : Définit un message flash
 - `getFlashMessage()` : Récupère et supprime le message flash
+
+### Comptes créés
+| Type | Email | Mot de passe | Rôle |
+|------|-------|--------------|------|
+| **Admin** | `admin@blogestrie.com` | `password` | Administrateur (is_admin = 1) |
+| **Utilisateur** | *(variable)* | *(variable)* | Utilisateur normal (is_admin = 0) |
 
 ### Tests effectués
 - ✅ Connexion avec email et mot de passe
@@ -371,9 +397,13 @@ git push
 - ✅ Messages flash de feedback
 - ✅ Navigation dynamique selon l'état de connexion
 - ✅ Redirection automatique si déjà connecté (login.php, register.php)
+- ✅ Badge "Admin" visible pour les administrateurs
+- ✅ Menu Admin avec dropdown (uniquement pour admins)
+- ✅ Protection requireAdmin() testée et fonctionnelle
+- ✅ Utilisateur non-admin redirigé depuis pages admin
 
 ---
 
-**Dernière mise à jour** : Session du 10/11/2025 15h45 - Étape 12 terminée ✅
-**Prochaine étape** : Étape 13 - Gestion des articles (liste admin)
-**Progression** : 60% du projet complété
+**Dernière mise à jour** : Session du 10/11/2025 16h30 - Étape 14 terminée ✅
+**Prochaine étape** : Étape 15 - Gestion des articles (liste admin)
+**Progression** : 65% du projet complété
