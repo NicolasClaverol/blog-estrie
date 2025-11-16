@@ -1,0 +1,214 @@
+<?php
+require_once '../includes/session.php';
+require_once '../includes/database.php';
+
+// Protéger la page (admin uniquement)
+requireAdmin();
+
+$page_title = "Créer un article - Blog Estrie";
+$errors = [];
+
+// Fonction pour générer un slug depuis un titre
+function generateSlug($text) {
+    // Remplacer les caractères accentués
+    $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
+    // Convertir en minuscules
+    $text = strtolower($text);
+    // Remplacer tout ce qui n'est pas une lettre ou un chiffre par un tiret
+    $text = preg_replace('/[^a-z0-9]+/', '-', $text);
+    // Supprimer les tirets en début et fin
+    $text = trim($text, '-');
+    return $text;
+}
+
+// Traitement du formulaire
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $titre = trim($_POST['titre'] ?? '');
+    $contenu = trim($_POST['contenu'] ?? '');
+    $slug = trim($_POST['slug'] ?? '');
+    
+    // Validation
+    if (empty($titre)) {
+        $errors[] = "Le titre est obligatoire.";
+    } elseif (strlen($titre) < 5) {
+        $errors[] = "Le titre doit contenir au moins 5 caractères.";
+    }
+    
+    if (empty($contenu)) {
+        $errors[] = "Le contenu est obligatoire.";
+    } elseif (strlen($contenu) < 50) {
+        $errors[] = "Le contenu doit contenir au moins 50 caractères.";
+    }
+    
+    // Générer le slug si vide
+    if (empty($slug)) {
+        $slug = generateSlug($titre);
+    } else {
+        $slug = generateSlug($slug);
+    }
+    
+    // Vérifier que le slug est unique
+    if (empty($errors)) {
+        $stmt = $pdo->prepare('SELECT id FROM articles WHERE slug = ?');
+        $stmt->execute([$slug]);
+        if ($stmt->fetch()) {
+            $errors[] = "Ce slug existe déjà. Veuillez en choisir un autre.";
+        }
+    }
+    
+    // Gestion de l'upload d'image
+    $imageName = null;
+    if (!empty($_FILES['image']['name'])) {
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        $maxSize = 5 * 1024 * 1024; // 5 MB
+        
+        if (!in_array($_FILES['image']['type'], $allowedTypes)) {
+            $errors[] = "Type d'image non autorisé. Utilisez JPG, PNG, GIF ou WebP.";
+        } elseif ($_FILES['image']['size'] > $maxSize) {
+            $errors[] = "L'image est trop volumineuse (max 5 MB).";
+        } else {
+            // Créer le dossier uploads s'il n'existe pas
+            if (!is_dir('../uploads')) {
+                mkdir('../uploads', 0755, true);
+            }
+            
+            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $imageName = uniqid() . '_' . time() . '.' . $extension;
+            $uploadPath = '../uploads/' . $imageName;
+            
+            if (!move_uploaded_file($_FILES['image']['tmp_name'], $uploadPath)) {
+                $errors[] = "Erreur lors de l'upload de l'image.";
+                $imageName = null;
+            }
+        }
+    }
+    
+    // Insertion en base de données si pas d'erreurs
+    if (empty($errors)) {
+        $stmt = $pdo->prepare('
+            INSERT INTO articles (titre, slug, contenu, image, user_id) 
+            VALUES (?, ?, ?, ?, ?)
+        ');
+        
+        $stmt->execute([
+            $titre,
+            $slug,
+            $contenu,
+            $imageName,
+            getUserId()
+        ]);
+        
+        setFlashMessage("Article créé avec succès !", "success");
+        header('Location: /admin/articles.php');
+        exit;
+    }
+}
+
+require_once '../includes/header.php';
+?>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1><i class="fas fa-plus-circle"></i> Créer un article</h1>
+                <a href="/admin/articles.php" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Retour à la liste
+                </a>
+            </div>
+            
+            <?php if (!empty($errors)): ?>
+                <div class="alert alert-danger">
+                    <strong><i class="fas fa-exclamation-circle"></i> Erreurs :</strong>
+                    <ul class="mb-0 mt-2">
+                        <?php foreach ($errors as $error): ?>
+                            <li><?= htmlspecialchars($error) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+            
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        <!-- Titre -->
+                        <div class="mb-3">
+                            <label for="titre" class="form-label">
+                                <i class="fas fa-heading"></i> Titre de l'article <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="titre" 
+                                   name="titre" 
+                                   value="<?= htmlspecialchars($titre ?? '') ?>"
+                                   required>
+                            <small class="text-muted">Minimum 5 caractères</small>
+                        </div>
+                        
+                        <!-- Slug -->
+                        <div class="mb-3">
+                            <label for="slug" class="form-label">
+                                <i class="fas fa-link"></i> Slug (URL)
+                            </label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="slug" 
+                                   name="slug" 
+                                   value="<?= htmlspecialchars($slug ?? '') ?>"
+                                   placeholder="Laissez vide pour génération automatique">
+                            <small class="text-muted">
+                                Le slug sera généré automatiquement depuis le titre si vous le laissez vide
+                            </small>
+                        </div>
+                        
+                        <!-- Image -->
+                        <div class="mb-3">
+                            <label for="image" class="form-label">
+                                <i class="fas fa-image"></i> Image de couverture
+                            </label>
+                            <input type="file" 
+                                   class="form-control" 
+                                   id="image" 
+                                   name="image"
+                                   accept="image/jpeg,image/png,image/gif,image/webp">
+                            <small class="text-muted">
+                                Formats acceptés : JPG, PNG, GIF, WebP (max 5 MB)
+                            </small>
+                        </div>
+                        
+                        <!-- Contenu -->
+                        <div class="mb-4">
+                            <label for="contenu" class="form-label">
+                                <i class="fas fa-paragraph"></i> Contenu de l'article <span class="text-danger">*</span>
+                            </label>
+                            <textarea class="form-control" 
+                                      id="contenu" 
+                                      name="contenu" 
+                                      rows="15" 
+                                      required><?= htmlspecialchars($contenu ?? '') ?></textarea>
+                            <small class="text-muted">Minimum 50 caractères</small>
+                        </div>
+                        
+                        <!-- Boutons -->
+                        <div class="d-flex justify-content-between">
+                            <a href="/admin/articles.php" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Annuler
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Créer l'article
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="alert alert-info mt-4">
+                <i class="fas fa-info-circle"></i>
+                <strong>Astuce :</strong> Le slug est généré automatiquement à partir du titre. 
+                Par exemple, "Découverte du Mont-Bellevue" devient "decouverte-du-mont-bellevue".
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php require_once '../includes/footer.php'; ?>
