@@ -102,11 +102,12 @@ npx sass --quiet-deps --watch assets/scss/custom.scss:assets/css/style.css
   - ✅ Suppression automatique de l'ancienne image
   - ✅ Mise à jour automatique de updated_at
   - ✅ Validation avec vérification unicité slug
-- ✅ **BONUS** : Page publique article (`article.php`)
-  - ✅ Affichage complet d'un article (titre, auteur, date, image, contenu)
-  - ✅ Fil d'Ariane (breadcrumb)
-  - ✅ Actions admin visibles uniquement pour les administrateurs
-  - ✅ Protection contre les slugs inexistants
+-- ✅ **BONUS** : Page de visualisation article (`article.php`)
+  - ✅ Permet aux admins de prévisualiser un article
+  - ✅ Accessible via le bouton "Voir" dans admin/articles.php
+  - ✅ Affichage complet : titre, auteur, date, image, contenu
+  - ✅ Actions admin (modifier, retour à la gestion)
+  - ✅ Note : Pas encore de liste publique des articles
 - ⏳ Étape 18 : Suppression d'article (`admin/delete_article.php`)
 - ⏳ Étape 19 : Affichage public - liste des articles (`articles.php`)
 
@@ -346,7 +347,7 @@ git push
 
 ### Prochaines étapes immédiates
 - [ ] Étape 18 : Suppression d'article (`admin/delete_article.php`)
-- [ ] Étape 19 : Liste publique des articles (`articles.php`) - optionnel
+- [ ] Étape 19 : Liste publique des articles (`articles.php`) - **en attente**
 - [ ] Étape 20-25 : Gestion complète des projets (même structure que les articles)
 
 ### Fonctionnalités à implémenter
