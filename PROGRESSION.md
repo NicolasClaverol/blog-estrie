@@ -82,42 +82,61 @@ npx sass --quiet-deps --watch assets/scss/custom.scss:assets/css/style.css
   - ✅ Menu Admin avec dropdown (Dashboard, Articles, Projets)
   - ✅ Tests de protection réussis
 
-### PARTIE 4 : GESTION DES ARTICLES ⏳ (0%)
-- ⏳ Étape 15 : Page admin - liste des articles
-- ⏳ Étape 16 : Formulaire création d'article
-- ⏳ Étape 17 : Upload d'images pour articles
-- ⏳ Étape 18 : Intégration TinyMCE (éditeur)
-- ⏳ Étape 19 : Modification d'article
-- ⏳ Étape 20 : Suppression d'article
-- ⏳ Étape 21 : Affichage public des articles
+### PARTIE 4 : GESTION DES ARTICLES ✅ (85%)
+- ✅ Étape 15 : Page admin - liste des articles (`admin/articles.php`)
+  - ✅ Affichage de tous les articles avec JOIN sur users
+  - ✅ Tableau avec images, titre, auteur, dates
+  - ✅ Boutons d'action (Voir, Modifier, Supprimer)
+  - ✅ Protection avec requireAdmin()
+- ✅ Étape 16 : Formulaire création d'article (`admin/create_article.php`)
+  - ✅ Formulaire complet (titre, slug, contenu, image)
+  - ✅ Génération automatique du slug depuis le titre
+  - ✅ Upload d'images avec validation (type, taille max 5MB)
+  - ✅ Validation des données (titre min 5 car, contenu min 50 car)
+  - ✅ Vérification d'unicité du slug
+  - ✅ Association automatique avec user_id
+- ✅ Étape 17 : Modification d'article (`admin/edit_article.php`)
+  - ✅ Récupération et pré-remplissage du formulaire
+  - ✅ Modification du titre, slug, contenu
+  - ✅ Remplacement ou suppression de l'image
+  - ✅ Suppression automatique de l'ancienne image
+  - ✅ Mise à jour automatique de updated_at
+  - ✅ Validation avec vérification unicité slug
+- ✅ **BONUS** : Page publique article (`article.php`)
+  - ✅ Affichage complet d'un article (titre, auteur, date, image, contenu)
+  - ✅ Fil d'Ariane (breadcrumb)
+  - ✅ Actions admin visibles uniquement pour les administrateurs
+  - ✅ Protection contre les slugs inexistants
+- ⏳ Étape 18 : Suppression d'article (`admin/delete_article.php`)
+- ⏳ Étape 19 : Affichage public - liste des articles (`articles.php`)
 
 ### PARTIE 5 : GESTION DES PROJETS ⏳ (0%)
-- ⏳ Étape 22 : Page admin - liste des projets
-- ⏳ Étape 23 : Formulaire création de projet
-- ⏳ Étape 24 : Upload d'images pour projets
-- ⏳ Étape 25 : Modification de projet
-- ⏳ Étape 26 : Suppression de projet
-- ⏳ Étape 27 : Affichage public des projets (portfolio)
+- ⏳ Étape 20 : Page admin - liste des projets
+- ⏳ Étape 21 : Formulaire création de projet
+- ⏳ Étape 22 : Upload d'images pour projets
+- ⏳ Étape 23 : Modification de projet
+- ⏳ Étape 24 : Suppression de projet
+- ⏳ Étape 25 : Affichage public des projets (portfolio)
 
 ### PARTIE 6 : COMMENTAIRES ⏳ (Optionnel)
-- ⏳ Étape 28 : Système de commentaires sous les articles
-- ⏳ Étape 29 : Modération des commentaires
+- ⏳ Étape 26 : Système de commentaires sous les articles
+- ⏳ Étape 27 : Modération des commentaires
 
 ### PARTIE 7 : FINALISATION ⏳ (0%)
-- ⏳ Étape 30 : Tests et corrections de bugs
-- ⏳ Étape 31 : Optimisation du code
-- ⏳ Étape 32 : Push final sur GitHub
-- ⏳ Étape 33 : Enregistrement vidéo de démonstration
-- ⏳ Étape 34 : Rédaction du README.md
+- ⏳ Étape 28 : Tests et corrections de bugs
+- ⏳ Étape 29 : Optimisation du code
+- ⏳ Étape 30 : Push final sur GitHub
+- ⏳ Étape 31 : Enregistrement vidéo de démonstration
+- ⏳ Étape 32 : Rédaction du README.md
 
 ---
 
 ## 📊 Progression globale
 ```
-[█████████████████░░░] 65% complété
+[███████████████████░] 75% complété
 ```
 
-**Temps estimé restant** : 10-12 heures
+**Temps estimé restant** : 6-8 heures
 
 ---
 
@@ -166,14 +185,18 @@ blog-estrie/
 │   ├── session.php ✅
 │   └── database.php ✅
 ├── admin/
-│   └── dashboard.php ✅
-├── uploads/ (pour les images)
+│   ├── dashboard.php ✅
+│   ├── articles.php ✅
+│   ├── create_article.php ✅
+│   └── edit_article.php ✅
+├── uploads/ ✅ (pour les images uploadées)
 ├── node_modules/ (ignoré par Git)
 ├── index.php
 ├── register.php
 ├── login.php
 ├── profile.php ✅
 ├── logout.php ✅
+├── article.php ✅ (affichage public)
 ├── adminer.php
 ├── test_connexion.php
 ├── PROGRESSION.md
@@ -192,7 +215,11 @@ blog-estrie/
 - ✅ `login.php` - Page de connexion (avec gestion is_admin)
 - ✅ `profile.php` - Page profil utilisateur (protégée)
 - ✅ `logout.php` - Page de déconnexion
+- ✅ `article.php` - Affichage public d'un article
 - ✅ `admin/dashboard.php` - Tableau de bord admin (protégé par requireAdmin)
+- ✅ `admin/articles.php` - Liste des articles (admin)
+- ✅ `admin/create_article.php` - Création d'article
+- ✅ `admin/edit_article.php` - Modification d'article
 - ✅ `test_connexion.php` - Test de connexion BDD
 - ✅ `assets/scss/custom.scss` - Styles personnalisés
 - ✅ `assets/css/style.css` - CSS compilé
@@ -295,7 +322,12 @@ git push
 3. ✅ "Étape 11 terminée : page de connexion fonctionnelle"
 4. ✅ "Étape 12 terminée : Système de sessions et protection des pages admin"
 5. ✅ "Mise à jour PROGRESSION.md - Étape 12 documentée"
-6. ✅ "Étape 14 terminée : Système de droits administrateur" *(à faire)*
+6. ✅ "Étape 14 terminée : Système de droits administrateur"
+7. ✅ "Étape 15 terminée : Page admin - liste des articles"
+8. ✅ "Étape 16 terminée : Formulaire de création d'article"
+9. ✅ "Ajout page article.php - Affichage public d'un article"
+10. ✅ "Étape 17 terminée : Modification d'articles"
+11. ⏳ "Mise à jour PROGRESSION.md - Étapes 14-17 documentées" *(à faire)*
 
 ---
 
@@ -313,20 +345,22 @@ git push
 ## 📝 Notes pour la suite
 
 ### Prochaines étapes immédiates
-- [ ] Étape 15 : Page admin - liste des articles (`admin/articles.php`)
-- [ ] Étape 16 : Formulaire de création d'article
-- [ ] Étape 17 : Upload et gestion des images
+- [ ] Étape 18 : Suppression d'article (`admin/delete_article.php`)
+- [ ] Étape 19 : Liste publique des articles (`articles.php`) - optionnel
+- [ ] Étape 20-25 : Gestion complète des projets (même structure que les articles)
 
 ### Fonctionnalités à implémenter
 - [x] Protection des pages admin (vérification session)
 - [x] Système de messages flash
 - [x] Navigation dynamique selon l'état de connexion
 - [x] Gestion des droits administrateur
-- [ ] Système CRUD complet pour les articles
+- [x] Création, modification, affichage d'articles
+- [x] Upload et gestion des images
+- [ ] Suppression d'articles
+- [ ] Liste publique des articles
 - [ ] Système CRUD complet pour les projets
-- [ ] Upload et gestion des images
-- [ ] Éditeur de texte riche (TinyMCE)
-- [ ] Génération automatique de slugs
+- [ ] Éditeur de texte riche (TinyMCE) - optionnel
+- [ ] Génération automatique de slugs ✅ (déjà fait)
 - [ ] Système de commentaires (optionnel)
 
 ### Contenu à créer
@@ -343,21 +377,25 @@ git push
 - ✅ Connexion / Déconnexion
 - ✅ Espace administrateur protégé
 - ✅ Gestion des droits (admin vs utilisateur)
-- ⏳ Création / Modification / Suppression d'articles
+- ✅ Création d'articles
+- ✅ Modification d'articles
+- ⏳ Suppression d'articles
+- ✅ Affichage d'un article
+- ⏳ Affichage liste publique des articles
 - ⏳ Création / Modification / Suppression de projets
-- ⏳ Affichage public des articles et projets
+- ⏳ Affichage public des projets
 
 ### Technologies obligatoires
 - ✅ HTML / CSS / JavaScript
 - ✅ Sass avec personnalisation Bootstrap
 - ✅ PHP avec MySQL
 - ✅ Git & GitHub
-- ⏳ TinyMCE ou textarea pour l'éditeur
+- ⏳ TinyMCE ou textarea pour l'éditeur (textarea utilisé pour l'instant)
 
 ### Livrables
 - ⏳ Code source complet sur GitHub
 - ✅ Base de données fonctionnelle
-- ⏳ Site web opérationnel
+- ⏳ Site web opérationnel (75% fait)
 - ⏳ Vidéo de démonstration (YouTube non-répertorié)
 - ⏳ README.md détaillé
 
@@ -389,21 +427,46 @@ git push
 | **Admin** | `admin@blogestrie.com` | `password` | Administrateur (is_admin = 1) |
 | **Utilisateur** | *(variable)* | *(variable)* | Utilisateur normal (is_admin = 0) |
 
-### Tests effectués
-- ✅ Connexion avec email et mot de passe
-- ✅ Redirection vers profile.php après connexion
-- ✅ Protection des pages admin (profile.php, admin/dashboard.php)
-- ✅ Déconnexion et destruction de session
+---
+
+## 📰 Système de gestion des articles
+
+### Pages créées
+- **`admin/articles.php`** : Liste de tous les articles (admin)
+  - Tableau avec images, titres, auteurs, dates
+  - Boutons : Voir, Modifier, Supprimer
+  - Protection requireAdmin()
+  
+- **`admin/create_article.php`** : Création d'un nouvel article
+  - Formulaire : titre, slug, contenu, image
+  - Génération automatique du slug
+  - Upload d'images (max 5MB, JPG/PNG/GIF/WebP)
+  - Validation côté serveur
+  
+- **`admin/edit_article.php`** : Modification d'un article existant
+  - Pré-remplissage du formulaire
+  - Remplacement ou suppression de l'image
+  - Mise à jour automatique de updated_at
+  - Bouton "Voir l'article" pour prévisualisation
+  
+- **`article.php`** : Affichage public d'un article
+  - Vue complète : titre, auteur, date, image, contenu
+  - Fil d'Ariane (breadcrumb)
+  - Actions admin (si connecté en admin)
+  - Protection contre slugs inexistants
+
+### Fonctionnalités implémentées
+- ✅ CRUD complet (sauf suppression)
+- ✅ Upload d'images avec validation
+- ✅ Génération automatique de slugs
+- ✅ Vérification d'unicité des slugs
+- ✅ Association automatique user_id
+- ✅ Dates created_at et updated_at
+- ✅ Affichage public responsive
 - ✅ Messages flash de feedback
-- ✅ Navigation dynamique selon l'état de connexion
-- ✅ Redirection automatique si déjà connecté (login.php, register.php)
-- ✅ Badge "Admin" visible pour les administrateurs
-- ✅ Menu Admin avec dropdown (uniquement pour admins)
-- ✅ Protection requireAdmin() testée et fonctionnelle
-- ✅ Utilisateur non-admin redirigé depuis pages admin
 
 ---
 
-**Dernière mise à jour** : Session du 10/11/2025 16h30 - Étape 14 terminée ✅
-**Prochaine étape** : Étape 15 - Gestion des articles (liste admin)
-**Progression** : 65% du projet complété
+**Dernière mise à jour** : Session du 10/11/2025 18h00 - Étapes 14-17 terminées ✅
+**Prochaine étape** : Étape 18 - Suppression d'article
+**Progression** : 75% du projet complété
