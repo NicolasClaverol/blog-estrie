@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($email) || empty($password)) {
         $error = 'Tous les champs sont obligatoires.';
     } else {
-        $stmt = $pdo->prepare('SELECT id, username, email, password FROM users WHERE email = ?');
+        $stmt = $pdo->prepare('SELECT id, username, email, password, is_admin FROM users WHERE email = ?');
         $stmt->execute([$email]);
         $user = $stmt->fetch();
         
@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
+            $_SESSION['is_admin'] = (bool)$user['is_admin'];
             
             setFlashMessage('Connexion réussie ! Bienvenue ' . $user['username']);
             header('Location: /profile.php');

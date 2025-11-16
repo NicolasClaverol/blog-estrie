@@ -49,4 +49,17 @@ function getFlashMessage() {
     }
     return null;
 }
+// Fonction pour vérifier si l'utilisateur est admin
+function isAdmin() {
+    return isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
+}
+
+// Fonction pour protéger une page admin (redirection si non admin)
+function requireAdmin() {
+    requireLogin(); // D'abord vérifier qu'il est connecté
+    if (!isAdmin()) {
+        header('Location: /index.php');
+        exit;
+    }
+}
 ?>

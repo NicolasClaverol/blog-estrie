@@ -3,7 +3,7 @@ require_once '../includes/session.php';
 require_once '../includes/database.php';
 
 // Protéger la page
-requireLogin();
+requireAdmin();
 
 require_once '../includes/header.php';
 ?>

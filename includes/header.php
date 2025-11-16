@@ -59,6 +59,10 @@ if (!isset($page_title)) {
                                     <i class="fas fa-cog"></i> Admin
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="/admin/dashboard.php">
+                                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                                    </a></li>
+                                    <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="/admin/articles.php">Gérer les articles</a></li>
                                     <li><a class="dropdown-item" href="/admin/projets.php">Gérer les projets</a></li>
                                     <li><hr class="dropdown-divider"></li>
@@ -71,8 +75,15 @@ if (!isset($page_title)) {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
                                 <i class="fas fa-user"></i> <?php echo htmlspecialchars($_SESSION['username']); ?>
+                                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+                                    <span class="badge bg-warning text-dark">Admin</span>
+                                <?php endif; ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="/profile.php">
+                                    <i class="fas fa-user-circle"></i> Mon Profil
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/logout.php">
                                     <i class="fas fa-sign-out-alt"></i> Déconnexion
                                 </a></li>
