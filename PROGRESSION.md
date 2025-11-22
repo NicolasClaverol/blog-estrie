@@ -72,7 +72,7 @@ npx sass --quiet-deps --watch assets/scss/custom.scss:assets/css/style.css
   - ✅ Système de messages flash
   - ✅ Protection des pages avec `requireLogin()`
   - ✅ Navigation dynamique selon l'état de connexion
-- ✅ Étape 13 : Page de déconnexion (`logout.php`) - Déjà fait à l'étape 12
+- ✅ Étape 13 : Page de déconnexion - Déjà fait à l'étape 12
 - ✅ Étape 14 : Création du compte administrateur
   - ✅ Compte admin créé : `admin@blogestrie.com` / `password`
   - ✅ Colonne `is_admin` dans la table users
@@ -82,7 +82,7 @@ npx sass --quiet-deps --watch assets/scss/custom.scss:assets/css/style.css
   - ✅ Menu Admin avec dropdown (Dashboard, Articles, Projets)
   - ✅ Tests de protection réussis
 
-### PARTIE 4 : GESTION DES ARTICLES ✅ (85%)
+### PARTIE 4 : GESTION DES ARTICLES ✅ (100%)
 - ✅ Étape 15 : Page admin - liste des articles (`admin/articles.php`)
   - ✅ Affichage de tous les articles avec JOIN sur users
   - ✅ Tableau avec images, titre, auteur, dates
@@ -102,28 +102,65 @@ npx sass --quiet-deps --watch assets/scss/custom.scss:assets/css/style.css
   - ✅ Suppression automatique de l'ancienne image
   - ✅ Mise à jour automatique de updated_at
   - ✅ Validation avec vérification unicité slug
--- ✅ **BONUS** : Page de visualisation article (`article.php`)
-  - ✅ Permet aux admins de prévisualiser un article
-  - ✅ Accessible via le bouton "Voir" dans admin/articles.php
-  - ✅ Affichage complet : titre, auteur, date, image, contenu
-  - ✅ Actions admin (modifier, retour à la gestion)
-  - ✅ Note : Pas encore de liste publique des articles
-- ⏳ Étape 18 : Suppression d'article (`admin/delete_article.php`)
-- ⏳ Étape 19 : Affichage public - liste des articles (`articles.php`)
+- ✅ Étape 18 : Suppression d'article (`admin/delete_article.php`)
+  - ✅ Page de confirmation avant suppression
+  - ✅ Affichage des détails de l'article
+  - ✅ Suppression de l'image du serveur
+  - ✅ Suppression en base de données
+  - ✅ Messages flash de confirmation
+- ✅ Étape 19 : Liste publique des articles (`articles.php`)
+  - ✅ Affichage en grille responsive (cards Bootstrap)
+  - ✅ Affichage image ou placeholder
+  - ✅ Métadonnées (auteur, date)
+  - ✅ Extrait du contenu (150 caractères)
+  - ✅ Effets au survol (élévation + zoom)
+  - ✅ Lien vers article.php
+- ✅ **BONUS** : Page de visualisation article (`article.php`)
+  - ✅ Affichage complet d'un article
+  - ✅ Fil d'Ariane (breadcrumb)
+  - ✅ Actions admin visibles pour les administrateurs
 
-### PARTIE 5 : GESTION DES PROJETS ⏳ (0%)
-- ⏳ Étape 20 : Page admin - liste des projets
-- ⏳ Étape 21 : Formulaire création de projet
-- ⏳ Étape 22 : Upload d'images pour projets
-- ⏳ Étape 23 : Modification de projet
-- ⏳ Étape 24 : Suppression de projet
-- ⏳ Étape 25 : Affichage public des projets (portfolio)
+### PARTIE 5 : GESTION DES PROJETS ✅ (100%)
+- ✅ Étape 20 : Page admin - liste des projets (`admin/projets.php`)
+  - ✅ Affichage de tous les projets avec JOIN sur users
+  - ✅ Tableau avec images, titre, liens, auteur, dates
+  - ✅ Boutons d'action (Voir, Modifier, Supprimer)
+  - ✅ Affichage des liens GitHub et Démo
+  - ✅ Protection avec requireAdmin()
+- ✅ Étape 21 : Formulaire création de projet (`admin/create_projet.php`)
+  - ✅ Formulaire complet (titre, slug, description, image, liens)
+  - ✅ Génération automatique du slug
+  - ✅ Upload d'images avec validation
+  - ✅ Champs liens GitHub et Démo (optionnels)
+  - ✅ Validation des URLs
+  - ✅ Vérification d'unicité du slug
+- ✅ Étape 22 : Modification de projet (`admin/edit_projet.php`)
+  - ✅ Récupération et pré-remplissage du formulaire
+  - ✅ Modification de tous les champs
+  - ✅ Remplacement ou suppression de l'image
+  - ✅ Mise à jour automatique de updated_at
+- ✅ Étape 23 : Suppression de projet (`admin/delete_projet.php`)
+  - ✅ Page de confirmation avant suppression
+  - ✅ Affichage des détails du projet (liens inclus)
+  - ✅ Suppression de l'image du serveur
+  - ✅ Suppression en base de données
+- ✅ Étape 24 : Affichage d'un projet (`projet.php`)
+  - ✅ Affichage complet d'un projet
+  - ✅ Fil d'Ariane
+  - ✅ Boutons GitHub et Démo fonctionnels
+  - ✅ Actions admin pour les administrateurs
+- ✅ Étape 25 : Portfolio - Liste publique (`projets.php`)
+  - ✅ Affichage en grille responsive
+  - ✅ Cards avec images et extraits
+  - ✅ Boutons GitHub et Démo sur chaque carte
+  - ✅ Effets au survol
+  - ✅ Lien vers projet.php
 
-### PARTIE 6 : COMMENTAIRES ⏳ (Optionnel)
-- ⏳ Étape 26 : Système de commentaires sous les articles
-- ⏳ Étape 27 : Modération des commentaires
+### PARTIE 6 : COMMENTAIRES ⏸️ (Non implémenté - Optionnel)
+- ⏸️ Étape 26 : Système de commentaires sous les articles
+- ⏸️ Étape 27 : Modération des commentaires
 
-### PARTIE 7 : FINALISATION ⏳ (0%)
+### PARTIE 7 : FINALISATION ⏳ (20%)
 - ⏳ Étape 28 : Tests et corrections de bugs
 - ⏳ Étape 29 : Optimisation du code
 - ⏳ Étape 30 : Push final sur GitHub
@@ -134,10 +171,10 @@ npx sass --quiet-deps --watch assets/scss/custom.scss:assets/css/style.css
 
 ## 📊 Progression globale
 ```
-[███████████████████░] 75% complété
+[███████████████████████] 95% complété ! 🎉
 ```
 
-**Temps estimé restant** : 6-8 heures
+**Temps estimé restant** : 1h15 (finalisation uniquement)
 
 ---
 
@@ -189,7 +226,12 @@ blog-estrie/
 │   ├── dashboard.php ✅
 │   ├── articles.php ✅
 │   ├── create_article.php ✅
-│   └── edit_article.php ✅
+│   ├── edit_article.php ✅
+│   ├── delete_article.php ✅
+│   ├── projets.php ✅
+│   ├── create_projet.php ✅
+│   ├── edit_projet.php ✅
+│   └── delete_projet.php ✅
 ├── uploads/ ✅ (pour les images uploadées)
 ├── node_modules/ (ignoré par Git)
 ├── index.php
@@ -198,6 +240,9 @@ blog-estrie/
 ├── profile.php ✅
 ├── logout.php ✅
 ├── article.php ✅ (affichage public)
+├── articles.php ✅ (liste publique)
+├── projet.php ✅ (affichage public)
+├── projets.php ✅ (portfolio)
 ├── adminer.php
 ├── test_connexion.php
 ├── PROGRESSION.md
@@ -206,21 +251,36 @@ blog-estrie/
 └── package.json
 ```
 
-### Fichiers créés jusqu'à présent
-- ✅ `includes/database.php` - Connexion BDD (migration depuis config/)
-- ✅ `includes/session.php` - Gestion centralisée des sessions + droits admin
-- ✅ `includes/header.php` - Navigation dynamique avec menu Admin
-- ✅ `includes/footer.php` - Pied de page réutilisable
+### Fichiers créés - Liste complète
+**Includes :**
+- ✅ `includes/database.php` - Connexion PDO à MySQL
+- ✅ `includes/session.php` - Gestion sessions + droits admin
+- ✅ `includes/header.php` - Navigation dynamique
+- ✅ `includes/footer.php` - Pied de page avec Bootstrap JS
+
+**Pages publiques :**
 - ✅ `index.php` - Page d'accueil
-- ✅ `register.php` - Page d'inscription
-- ✅ `login.php` - Page de connexion (avec gestion is_admin)
-- ✅ `profile.php` - Page profil utilisateur (protégée)
-- ✅ `logout.php` - Page de déconnexion
-- ✅ `article.php` - Affichage public d'un article
-- ✅ `admin/dashboard.php` - Tableau de bord admin (protégé par requireAdmin)
-- ✅ `admin/articles.php` - Liste des articles (admin)
+- ✅ `register.php` - Inscription
+- ✅ `login.php` - Connexion (par email)
+- ✅ `profile.php` - Profil utilisateur (protégé)
+- ✅ `logout.php` - Déconnexion
+- ✅ `article.php` - Affichage d'un article
+- ✅ `articles.php` - Liste publique des articles
+- ✅ `projet.php` - Affichage d'un projet
+- ✅ `projets.php` - Portfolio (liste publique)
+
+**Pages admin :**
+- ✅ `admin/dashboard.php` - Tableau de bord (protégé)
+- ✅ `admin/articles.php` - Gestion des articles
 - ✅ `admin/create_article.php` - Création d'article
 - ✅ `admin/edit_article.php` - Modification d'article
+- ✅ `admin/delete_article.php` - Suppression d'article
+- ✅ `admin/projets.php` - Gestion des projets
+- ✅ `admin/create_projet.php` - Création de projet
+- ✅ `admin/edit_projet.php` - Modification de projet
+- ✅ `admin/delete_projet.php` - Suppression de projet
+
+**Utilitaires :**
 - ✅ `test_connexion.php` - Test de connexion BDD
 - ✅ `assets/scss/custom.scss` - Styles personnalisés
 - ✅ `assets/css/style.css` - CSS compilé
@@ -251,7 +311,7 @@ blog-estrie/
 
 ### Chemins CSS
 - **Problème** : CSS ne se charge pas (404)
-- **Solution** : Utiliser `/` au lieu de `/blog-estrie/` dans les chemins car le serveur PHP intégré est à la racine du projet
+- **Solution** : Utiliser `/` au lieu de `/blog-estrie/` dans les chemins
 
 ### Sass deprecation warnings
 - **Note** : Les warnings sont normaux avec Bootstrap 5.3.2
@@ -262,7 +322,7 @@ blog-estrie/
 
 ### Apache ne démarre pas
 - **Problème** : Apache échoue au démarrage (conflit de port)
-- **Solution** : Utiliser uniquement le serveur PHP intégré, Apache non nécessaire
+- **Solution** : Utiliser uniquement le serveur PHP intégré
 
 ### phpMyAdmin inaccessible
 - **Problème** : phpMyAdmin nécessite Apache
@@ -270,33 +330,25 @@ blog-estrie/
 ```bash
   cp /var/www/html/adminer.php /var/www/html/blog-estrie/adminer.php
 ```
-  Puis accéder via `http://localhost:8000/adminer.php`
 
 ### Git push - Authentication failed
 - **Problème** : GitHub n'accepte plus les mots de passe
 - **Solution** : Utiliser un Personal Access Token (PAT)
-  - Générer sur GitHub : Settings → Developer settings → Personal access tokens
-  - Utiliser le token comme mot de passe lors du push
-  - Mémoriser avec `git config --global credential.helper store`
 
 ### Port 8000 déjà utilisé
-- **Problème** : `Failed to listen on localhost:8000 (reason: Address already in use)`
+- **Problème** : `Failed to listen on localhost:8000`
 - **Solution** : 
 ```bash
-  # Trouver et tuer le processus
-  lsof -i :8000
-  kill [PID]
-  # OU tuer tous les serveurs PHP
   pkill -f "php -S"
 ```
 
 ### Migration config/ vers includes/
-- **Problème** : Fichier `config/database.php` utilisé mais structure incohérente
-- **Solution** : Créer `includes/database.php` et mettre à jour tous les fichiers (login.php, register.php) pour utiliser le nouveau chemin
+- **Problème** : Structure incohérente
+- **Solution** : Créer `includes/database.php` et mettre à jour tous les fichiers
 
-### No database selected (ERROR 1046)
-- **Problème** : Erreur lors de l'insertion du compte admin
-- **Solution** : Toujours exécuter `USE blog_estrie;` avant les requêtes SQL
+### Formulaire de connexion ne se soumettait pas
+- **Problème** : Confusion username/email dans le formulaire
+- **Solution** : Utiliser l'email pour la connexion (comme configuré)
 
 ---
 
@@ -328,7 +380,10 @@ git push
 8. ✅ "Étape 16 terminée : Formulaire de création d'article"
 9. ✅ "Ajout page article.php - Affichage public d'un article"
 10. ✅ "Étape 17 terminée : Modification d'articles"
-11. ⏳ "Mise à jour PROGRESSION.md - Étapes 14-17 documentées" *(à faire)*
+11. ✅ "Étape 18 terminée : Suppression d'articles"
+12. ✅ "Étape 19 terminée : Liste publique des articles"
+13. ✅ "Gestion complète des projets (CRUD) - Étapes 20-25 terminées"
+14. ⏳ "Mise à jour PROGRESSION.md - Projet à 95%" *(à faire)*
 
 ---
 
@@ -336,67 +391,79 @@ git push
 
 - [Documentation Bootstrap](https://getbootstrap.com/docs/5.3/)
 - [Documentation Sass](https://sass-lang.com/documentation/)
-- [TinyMCE](https://www.tiny.cloud/docs/quick-start/) (pour l'éditeur de texte)
+- [TinyMCE](https://www.tiny.cloud/docs/quick-start/) (pour l'éditeur de texte - optionnel)
 - [Font Awesome Icons](https://fontawesome.com/icons)
 - [Documentation PHP](https://www.php.net/manual/fr/)
 - [Documentation MySQL](https://dev.mysql.com/doc/)
 
 ---
 
-## 📝 Notes pour la suite
+## 📝 Notes pour la finalisation
 
-### Prochaines étapes immédiates
-- [ ] Étape 18 : Suppression d'article (`admin/delete_article.php`)
-- [ ] Étape 19 : Liste publique des articles (`articles.php`) - **en attente**
-- [ ] Étape 20-25 : Gestion complète des projets (même structure que les articles)
+### Prochaines étapes (1h15 restantes)
+- [ ] Tests finaux complets (15 min)
+  - Vérifier tous les liens de navigation
+  - Tester toutes les fonctionnalités CRUD
+  - Vérifier le responsive mobile/tablette
+  - Tester avec compte admin et utilisateur normal
+- [ ] Rédaction du README.md professionnel (20 min)
+  - Description du projet
+  - Technologies utilisées
+  - Instructions d'installation
+  - Captures d'écran
+  - Fonctionnalités principales
+- [ ] Enregistrement vidéo de démonstration (30 min)
+  - Présentation du site
+  - Démonstration des fonctionnalités admin
+  - Démonstration des pages publiques
+  - Upload sur YouTube (non-répertorié)
+- [ ] Vérification finale et push (10 min)
 
-### Fonctionnalités à implémenter
-- [x] Protection des pages admin (vérification session)
-- [x] Système de messages flash
-- [x] Navigation dynamique selon l'état de connexion
+### Fonctionnalités implémentées (résumé)
+- [x] Système d'authentification complet
 - [x] Gestion des droits administrateur
-- [x] Création, modification, affichage d'articles
-- [x] Upload et gestion des images
-- [ ] Suppression d'articles
-- [ ] Liste publique des articles
-- [ ] Système CRUD complet pour les projets
-- [ ] Éditeur de texte riche (TinyMCE) - optionnel
-- [ ] Génération automatique de slugs ✅ (déjà fait)
-- [ ] Système de commentaires (optionnel)
+- [x] CRUD complet pour les articles
+- [x] CRUD complet pour les projets
+- [x] Upload et gestion d'images
+- [x] Génération automatique de slugs
+- [x] Validation des données côté serveur
+- [x] Messages flash de feedback
+- [x] Navigation dynamique selon l'état de connexion
+- [x] Pages publiques responsive
+- [x] Effets visuels au survol
+- [x] Fil d'Ariane (breadcrumb)
+- [x] Liens externes (GitHub, Démo)
 
-### Contenu à créer
-- [ ] Rédiger des articles sur l'Estrie
-- [ ] Créer des projets de portfolio
-- [ ] Trouver/créer des images de l'Estrie
-- [ ] Préparer le script de la vidéo de démonstration
+### Fonctionnalités optionnelles non implémentées
+- [ ] Éditeur de texte riche (TinyMCE)
+- [ ] Système de commentaires
+- [ ] Pagination des articles/projets
+- [ ] Recherche
+- [ ] Catégories/Tags
 
 ---
 
-## 🎯 Objectifs du projet
+## 🎯 Objectifs du projet Believemy
 
-### Fonctionnalités obligatoires
+### Fonctionnalités obligatoires ✅ TOUTES COMPLÈTES
 - ✅ Connexion / Déconnexion
 - ✅ Espace administrateur protégé
 - ✅ Gestion des droits (admin vs utilisateur)
-- ✅ Création d'articles
-- ✅ Modification d'articles
-- ⏳ Suppression d'articles
-- ✅ Affichage d'un article
-- ⏳ Affichage liste publique des articles
-- ⏳ Création / Modification / Suppression de projets
-- ⏳ Affichage public des projets
+- ✅ Création / Modification / Suppression d'articles
+- ✅ Création / Modification / Suppression de projets
+- ✅ Affichage public des articles et projets
 
-### Technologies obligatoires
+### Technologies obligatoires ✅ TOUTES UTILISÉES
 - ✅ HTML / CSS / JavaScript
 - ✅ Sass avec personnalisation Bootstrap
 - ✅ PHP avec MySQL
 - ✅ Git & GitHub
-- ⏳ TinyMCE ou textarea pour l'éditeur (textarea utilisé pour l'instant)
+- ✅ Textarea pour l'éditeur (TinyMCE optionnel)
 
 ### Livrables
-- ⏳ Code source complet sur GitHub
+- ✅ Code source complet sur GitHub
 - ✅ Base de données fonctionnelle
-- ⏳ Site web opérationnel (75% fait)
+- ✅ Site web opérationnel (95%)
 - ⏳ Vidéo de démonstration (YouTube non-répertorié)
 - ⏳ README.md détaillé
 
@@ -432,42 +499,48 @@ git push
 
 ## 📰 Système de gestion des articles
 
-### Pages créées
-- **`admin/articles.php`** : Liste de tous les articles (admin)
-  - Tableau avec images, titres, auteurs, dates
-  - Boutons : Voir, Modifier, Supprimer
-  - Protection requireAdmin()
-  
-- **`admin/create_article.php`** : Création d'un nouvel article
-  - Formulaire : titre, slug, contenu, image
-  - Génération automatique du slug
-  - Upload d'images (max 5MB, JPG/PNG/GIF/WebP)
-  - Validation côté serveur
-  
-- **`admin/edit_article.php`** : Modification d'un article existant
-  - Pré-remplissage du formulaire
-  - Remplacement ou suppression de l'image
-  - Mise à jour automatique de updated_at
-  - Bouton "Voir l'article" pour prévisualisation
-  
-- **`article.php`** : Affichage public d'un article
-  - Vue complète : titre, auteur, date, image, contenu
-  - Fil d'Ariane (breadcrumb)
-  - Actions admin (si connecté en admin)
-  - Protection contre slugs inexistants
+### Fonctionnalités
+- CRUD complet (Create, Read, Update, Delete)
+- Upload d'images avec validation
+- Génération automatique de slugs
+- Vérification d'unicité des slugs
+- Association automatique user_id
+- Dates created_at et updated_at
+- Affichage public responsive
+- Liste admin avec tableau
+- Messages flash de feedback
 
-### Fonctionnalités implémentées
-- ✅ CRUD complet (sauf suppression)
-- ✅ Upload d'images avec validation
-- ✅ Génération automatique de slugs
-- ✅ Vérification d'unicité des slugs
-- ✅ Association automatique user_id
-- ✅ Dates created_at et updated_at
-- ✅ Affichage public responsive
-- ✅ Messages flash de feedback
+### Pages créées
+- `admin/articles.php` : Gestion admin
+- `admin/create_article.php` : Création
+- `admin/edit_article.php` : Modification
+- `admin/delete_article.php` : Suppression
+- `article.php` : Affichage public
+- `articles.php` : Liste publique
 
 ---
 
-**Dernière mise à jour** : Session du 10/11/2025 18h00 - Étapes 14-17 terminées ✅
-**Prochaine étape** : Étape 18 - Suppression d'article
-**Progression** : 75% du projet complété
+## 🏗️ Système de gestion des projets
+
+### Fonctionnalités
+- CRUD complet identique aux articles
+- Upload d'images avec validation
+- Génération automatique de slugs
+- Champs supplémentaires : lien_github, lien_demo
+- Validation des URLs
+- Affichage des liens sur les cards
+- Portfolio responsive avec effets
+
+### Pages créées
+- `admin/projets.php` : Gestion admin
+- `admin/create_projet.php` : Création
+- `admin/edit_projet.php` : Modification
+- `admin/delete_projet.php` : Suppression
+- `projet.php` : Affichage public
+- `projets.php` : Portfolio
+
+---
+
+**Dernière mise à jour** : Session du 22/11/2025 22h30 - Projet à 95% ✅
+**Prochaine étape** : Finalisation (tests, README, vidéo)
+**Progression** : 95% du projet complété - IL NE RESTE PLUS QUE 5% ! 🎉
