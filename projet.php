@@ -91,7 +91,7 @@ require_once 'includes/header.php';
                 <!-- Description -->
                 <div class="projet-content">
                     <h3 class="mb-3">Description du projet</h3>
-                    <?= nl2br(htmlspecialchars($projet['description'])) ?>
+                    <?= $projet['description'] ?>
                 </div>
             </article>
             

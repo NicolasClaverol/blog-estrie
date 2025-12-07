@@ -69,7 +69,7 @@ require_once 'includes/header.php';
                 
                 <!-- Contenu -->
                 <div class="article-content">
-                    <?= nl2br(htmlspecialchars($article['contenu'])) ?>
+                    <?= $article['contenu'] ?>
                 </div>
             </article>
             

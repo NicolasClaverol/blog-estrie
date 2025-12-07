@@ -68,7 +68,7 @@ require_once 'includes/header.php';
                             
                             <!-- Extrait -->
                             <p class="card-text flex-grow-1">
-                                <?= htmlspecialchars(mb_substr($projet['description'], 0, 150)) ?>...
+                                <?= strip_tags(mb_substr($projet['description'], 0, 150)) ?>...
                             </p>
                             
                             <!-- Liens et bouton -->

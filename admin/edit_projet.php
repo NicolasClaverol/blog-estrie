@@ -290,8 +290,7 @@ require_once '../includes/header.php';
                             <textarea class="form-control" 
                                       id="description" 
                                       name="description" 
-                                      rows="15" 
-                                      required><?= htmlspecialchars($projet['description']) ?></textarea>
+                                      rows="15"><?= htmlspecialchars($projet['description']) ?></textarea>
                             <small class="text-muted">Minimum 50 caractères</small>
                         </div>
                         
@@ -323,4 +322,24 @@ require_once '../includes/header.php';
     </div>
 </div>
 
+<!-- TinyMCE -->
+<script src="https://cdn.tiny.cloud/1/gws4sna8h8ddyeoot76fcklj60x60i6nisul0dfjzthxwftt/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+    selector: '#description',
+    height: 500,
+    menubar: false,
+    plugins: [
+        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+        'insertdatetime', 'media', 'table', 'help', 'wordcount'
+    ],
+    toolbar: 'undo redo | blocks | bold italic underline strikethrough | ' +
+             'alignleft aligncenter alignright alignjustify | ' +
+             'bullist numlist outdent indent | link image | ' +
+             'forecolor backcolor | removeformat | help',
+    content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; font-size: 14px; line-height: 1.6; }',
+    language: 'fr_FR'
+});
+</script>
 <?php require_once '../includes/footer.php'; ?>

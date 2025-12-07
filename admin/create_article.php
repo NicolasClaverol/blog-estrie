@@ -182,10 +182,9 @@ require_once '../includes/header.php';
                                 <i class="fas fa-paragraph"></i> Contenu de l'article <span class="text-danger">*</span>
                             </label>
                             <textarea class="form-control" 
-                                      id="contenu" 
-                                      name="contenu" 
-                                      rows="15" 
-                                      required><?= htmlspecialchars($contenu ?? '') ?></textarea>
+                                        id="contenu" 
+                                        name="contenu" 
+                                        rows="15"><?= htmlspecialchars($contenu ?? '') ?></textarea>
                             <small class="text-muted">Minimum 50 caractères</small>
                         </div>
                         
@@ -210,5 +209,26 @@ require_once '../includes/header.php';
         </div>
     </div>
 </div>
+
+<!-- TinyMCE -->
+<script src="https://cdn.tiny.cloud/1/gws4sna8h8ddyeoot76fcklj60x60i6nisul0dfjzthxwftt/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+    selector: '#contenu',
+    height: 500,
+    menubar: false,
+    plugins: [
+        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+        'insertdatetime', 'media', 'table', 'help', 'wordcount'
+    ],
+    toolbar: 'undo redo | blocks | bold italic underline strikethrough | ' +
+             'alignleft aligncenter alignright alignjustify | ' +
+             'bullist numlist outdent indent | link image | ' +
+             'forecolor backcolor | removeformat | help',
+    content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; font-size: 14px; line-height: 1.6; }',
+    language: 'fr_FR'
+});
+</script>
 
 <?php require_once '../includes/footer.php'; ?>
