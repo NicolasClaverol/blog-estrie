@@ -14,10 +14,10 @@ require_once 'includes/header.php';
             inoubliables de la région de Sherbrooke
         </p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="articles.php" class="btn btn-light btn-lg px-4 gap-3">
+            <a href="/articles.php" class="btn btn-light btn-lg px-4 gap-3">
                 <i class="fas fa-newspaper"></i> Découvrir les articles
             </a>
-            <a href="projets.php" class="btn btn-outline-light btn-lg px-4">
+            <a href="/projets.php" class="btn btn-outline-light btn-lg px-4">
                 <i class="fas fa-folder-open"></i> Voir les projets
             </a>
         </div>
@@ -40,38 +40,17 @@ require_once 'includes/header.php';
                 ici de l'inspiration pour vos prochaines aventures.
             </p>
         </div>
-        <div class="col-md-6">
-            <img src="assets/images/estrie-placeholder.jpg" 
-                 alt="Paysage de l'Estrie" 
-                 class="img-fluid rounded shadow"
-                 onerror="this.src='https://via.placeholder.com/600x400/2C5F2D/FFFFFF?text=Estrie'">
-        </div>
-    </div>
-</section>
-
-<!-- Section Articles récents -->
-<section class="bg-light py-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Articles récents</h2>
-        <div class="row">
-            <!-- Les articles seront affichés ici dynamiquement plus tard -->
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/400x250/2C5F2D/FFFFFF?text=Article+1" 
-                         class="card-img-top" alt="Article">
-                    <div class="card-body">
-                        <h5 class="card-title">Article à venir</h5>
-                        <p class="card-text">
-                            Les articles apparaîtront ici une fois que vous en aurez créé.
-                        </p>
-                        <a href="#" class="btn btn-primary">Lire la suite</a>
-                    </div>
-                </div>
+        <div class="col-md-6 text-center">
+            <!-- Fleur de lys du Québec -->
+            <div class="p-5">
+                <img src="/assets/images/fleur-de-lys.svg" 
+                     alt="Fleur de lys du Québec" 
+                     style="max-width: 300px; height: auto; filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.15));">
+                    <h3 class="mt-4" style="color: #003399;">Québec</h3>
+                <p class="text-muted mb-0">La Belle Province</p>
             </div>
         </div>
     </div>
 </section>
 
 <?php require_once 'includes/footer.php'; ?>
-```
-
