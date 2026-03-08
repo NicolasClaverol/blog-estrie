@@ -118,13 +118,3 @@ require_once 'includes/header.php';
 
 <?php require_once 'includes/footer.php'; ?>
 ```
-
----
-
-## 🧪 Test de la page
-
-### **1️⃣ Accéder à la page**
-
-Ouvre ton navigateur et va sur :
-```
-http://localhost:8000/articles.php

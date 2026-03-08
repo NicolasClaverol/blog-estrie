@@ -138,16 +138,4 @@ require_once 'includes/header.php';
 <?php require_once 'includes/footer.php'; ?>
 ```
 
----
-
-## 🧪 Test de la page
-
-### **1️⃣ Accéder au projet**
-
-**Option A :** Via le bouton 👁️ dans la liste admin
-- Va sur `http://localhost:8000/admin/projets.php`
-- Clique sur le bouton 👁️ "Voir" d'un projet
-
-**Option B :** Directement avec le slug
-```
-http://localhost:8000/projet.php?slug=portfolio-blog-estrie
+-

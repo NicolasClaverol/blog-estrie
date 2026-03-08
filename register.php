@@ -163,29 +163,3 @@ require_once 'includes/header.php';
 
 <?php require_once 'includes/footer.php'; ?>
 ```
-
----
-
-## 📝 Résumé des modifications
-
-### **Changements effectués :**
-
-1. **Ligne 2-3** : 
-   - ❌ `require_once 'config/database.php';`
-   - ✅ `require_once 'includes/session.php';`
-   - ✅ `require_once 'includes/database.php';`
-
-2. **Ligne 9-12** :
-   - ❌ `if (isset($_SESSION['user_id']))`
-   - ✅ `if (isLoggedIn())`
-   - Redirection vers `/profile.php` au lieu de `/index.php`
-
-3. **Ligne 47-53** : Suppression du `try/catch` et de `getConnection()` (simplifié car `$pdo` est maintenant global)
-
-4. **Ligne 64** : Suppression de `, is_admin` et de `, 0` dans l'INSERT (simplifié)
-
----
-
-## ✅ Teste maintenant
-```
-http://localhost:8000/register.php
