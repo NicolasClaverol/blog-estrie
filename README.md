@@ -1,237 +1,270 @@
-# 🏔️ Blog Estrie
+# 🏔️ Blog Estrie - Découverte de Sherbrooke et ses environs
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![PHP Version](https://img.shields.io/badge/PHP-8.3%2B-blue)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.2-purple)
-![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-orange)
+Blog et portfolio personnel sur la magnifique région de l'Estrie au Québec visitée récemment. Projet réalisé dans le cadre de la formation **Believemy - Projet Passerelle #2**.
 
-Un blog et portfolio personnel dédié à la découverte de la région de l'Estrie au Québec, développé dans le cadre de la formation Believemy.
+![Estrie](https://via.placeholder.com/1200x400/2C5F2D/FFFFFF?text=Blog+Estrie)
 
 ---
 
 ## 📋 Table des matières
 
-- [À propos](#à-propos)
-- [Fonctionnalités](#fonctionnalités)
-- [Technologies utilisées](#technologies-utilisées)
-- [Prérequis](#prérequis)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Structure du projet](#structure-du-projet)
-- [Captures d'écran](#captures-décran)
-- [Auteur](#auteur)
-- [Licence](#licence)
+- [Présentation](#-présentation)
+- [Fonctionnalités](#-fonctionnalités)
+- [Technologies utilisées](#-technologies-utilisées)
+- [Installation](#-installation)
+- [Utilisation](#-utilisation)
+- [Structure du projet](#-structure-du-projet)
+- [Captures d'écran](#-captures-décran)
+- [Auteur](#-auteur)
 
 ---
 
-## 📖 À propos
+## 🎯 Présentation
 
-**Blog Estrie** est un projet de blog et portfolio développé avec PHP, MySQL et Bootstrap. Il permet de publier des articles sur la région de l'Estrie (Sherbrooke, Mont-Orford, etc.) et de présenter des projets de développement web dans un portfolio interactif.
+**Blog Estrie** est une plateforme web complète permettant de :
+- Découvrir la région de l'Estrie à travers des articles 
+- Consulter un portfolio de projets personnels
+- Gérer du contenu via un espace administrateur sécurisé
 
-Le projet inclut :
-- 🔐 Un système d'authentification complet
-- 👤 Une gestion des droits administrateur
-- 📝 Un éditeur de texte riche (TinyMCE)
-- 🖼️ Un système de gestion d'images
-- 🎨 Un design responsive moderne
+Le projet met en avant les paysages, l'histoire et les attractions de Sherbrooke et ses environs, tout en démontrant des compétences en développement web full-stack.
 
 ---
 
 ## ✨ Fonctionnalités
 
-### Partie publique
-- 🏠 Page d'accueil avec présentation
-- 📰 Liste des articles avec pagination visuelle
-- 📄 Affichage d'articles complets avec mise en forme
-- 💼 Portfolio de projets avec liens GitHub et démo
-- 📱 Design responsive (mobile, tablette, desktop)
+### 🔐 Authentification
+- Inscription et connexion des utilisateurs
+- Système de sessions sécurisé
+- Gestion des droits (administrateur / utilisateur)
+- Protection des pages admin
 
-### Partie administration
-- 🔐 Connexion / Déconnexion sécurisée
-- 👥 Système de gestion des utilisateurs
-- 🛡️ Protection par droits administrateur
-- ✍️ **Éditeur WYSIWYG TinyMCE** pour la rédaction
-- 📝 CRUD complet pour les articles :
-  - Création avec éditeur riche
-  - Modification avec prévisualisation
-  - Suppression avec confirmation
-  - Upload d'images (max 5 MB)
-  - Génération automatique de slugs
-- 🏗️ CRUD complet pour les projets :
-  - Gestion des liens GitHub et démo
-  - Upload d'images de couverture
-  - Description avec mise en forme
-- 💬 Messages flash pour le feedback utilisateur
-- 📊 Tableau de bord administrateur
+### 📝 Gestion des articles
+- **CRUD complet** : Création, lecture, modification, suppression
+- **Éditeur WYSIWYG** : TinyMCE 6 pour une mise en forme riche
+- Upload et gestion d'images
+- Génération automatique de slugs
+- Affichage public responsive avec extraits
+
+### 🚀 Gestion des projets (Portfolio)
+- CRUD complet avec éditeur TinyMCE
+- Liens GitHub et démo pour chaque projet
+- Upload d'images
+- Affichage en grille responsive
+
+### 🎨 Design
+- Interface moderne avec Bootstrap 5.3.2
+- Personnalisation Sass avec palette de couleurs Estrie
+- Design responsive (mobile, tablette, desktop)
+- Effets visuels au survol
+- Messages flash de feedback
 
 ---
 
 ## 🛠️ Technologies utilisées
 
-### Backend
-- **PHP 8.3+** - Langage serveur
-- **MySQL 8.0+** - Base de données
-- **PDO** - Accès sécurisé à la base de données
-
 ### Frontend
-- **HTML5 / CSS3** - Structure et style
-- **JavaScript (ES6+)** - Interactivité
+- **HTML5** / **CSS3** / **JavaScript**
 - **Bootstrap 5.3.2** - Framework CSS responsive
-- **Sass** - Préprocesseur CSS
+- **Sass** - Préprocesseur CSS avec personnalisation
 - **Font Awesome 6.4.0** - Icônes
-- **TinyMCE 6** - Éditeur de texte WYSIWYG
+- **TinyMCE 6** - Éditeur WYSIWYG
+
+### Backend
+- **PHP 8.3** - Langage serveur
+- **MySQL 8.0** - Base de données relationnelle
+- **PDO** - Accès sécurisé à la base de données
+- **Sessions PHP** - Gestion de l'authentification
 
 ### Outils
-- **Git / GitHub** - Gestion de versions
-- **VS Code** - Éditeur de code
-- **Adminer** - Administration de base de données
-- **npm / Node.js** - Gestion des dépendances (Sass)
+- **Git / GitHub** - Versioning et collaboration
+- **npm** - Gestion des dépendances frontend
+- **VS Code** - Environnement de développement
+- **Adminer** - Administration de la base de données
 
 ---
 
-## 📦 Prérequis
+## 💻 Installation
 
-Avant de commencer, assurez-vous d'avoir installé :
+### Prérequis
+- PHP 8.0 ou supérieur
+- MySQL 5.7 ou supérieur
+- npm (pour compiler Sass)
+- Git
 
-- **PHP 8.3 ou supérieur**
-- **MySQL 8.0 ou supérieur**
-- **Node.js et npm** (pour Sass)
-- **Git**
+### Étapes d'installation
 
----
-
-## 🚀 Installation
-
-### 1. Cloner le repository
+1. **Cloner le repository**
 ```bash
 git clone https://github.com/NicolasClaverol/blog-estrie.git
 cd blog-estrie
 ```
 
-### 2. Configurer la base de données
-
-**Créer la base de données :**
-```bash
-mysql -u root -p
-```
-```sql
-CREATE DATABASE blog_estrie CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Admin123';
-GRANT ALL PRIVILEGES ON blog_estrie.* TO 'admin'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
-```
-
-**Importer la structure :**
-```bash
-mysql -u admin -p blog_estrie < database/schema.sql
-```
-
-### 3. Configurer les paramètres de connexion
-
-Ouvrir `includes/database.php` et vérifier les paramètres :
-```php
-$host = 'localhost';
-$dbname = 'blog_estrie';
-$username = 'admin';
-$password = 'Admin123';
-```
-
-### 4. Installer les dépendances Sass
+2. **Installer les dépendances npm**
 ```bash
 npm install
 ```
 
-### 5. Compiler le CSS
+3. **Compiler Sass**
 ```bash
 npx sass assets/scss/custom.scss assets/css/style.css
 ```
 
-### 6. Créer le dossier uploads
-```bash
-mkdir uploads
-chmod 755 uploads
+4. **Créer la base de données**
+```sql
+CREATE DATABASE blog_estrie CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 ```
 
-### 7. Lancer le serveur PHP
+5. **Importer la structure**
+
+Créez les tables suivantes dans votre base de données :
+```sql
+-- Table users
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    is_admin BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table articles
+CREATE TABLE articles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titre VARCHAR(200) NOT NULL,
+    slug VARCHAR(200) UNIQUE NOT NULL,
+    contenu TEXT NOT NULL,
+    image VARCHAR(255),
+    user_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Table projets
+CREATE TABLE projets (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titre VARCHAR(200) NOT NULL,
+    slug VARCHAR(200) UNIQUE NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(255),
+    lien_github VARCHAR(255),
+    lien_demo VARCHAR(255),
+    user_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Table commentaires (optionnel)
+CREATE TABLE commentaires (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    article_id INT,
+    user_id INT,
+    contenu TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+```
+
+6. **Configurer la connexion à la base de données**
+
+Modifiez le fichier `includes/database.php` avec vos identifiants :
+```php
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'blog_estrie');
+define('DB_USER', 'votre_utilisateur');
+define('DB_PASS', 'votre_mot_de_passe');
+```
+
+7. **Créer le compte administrateur**
+
+Inscrivez-vous via `/register.php`, puis mettez à jour manuellement en base :
+```sql
+UPDATE users SET is_admin = 1 WHERE email = 'votre@email.com';
+```
+
+8. **Démarrer le serveur PHP**
 ```bash
 php -S localhost:8000
 ```
 
-### 8. Accéder au site
+9. **Accéder au site**
 
-Ouvrir votre navigateur et aller sur :
-```
-http://localhost:8000
-```
+Ouvrez votre navigateur sur : **http://localhost:8000**
 
 ---
 
-## 👤 Utilisation
+## 🎮 Utilisation
+
+### Espace public
+- **Page d'accueil** : `/index.php`
+- **Liste des articles** : `/articles.php`
+- **Article complet** : `/article.php?slug=...`
+- **Portfolio** : `/projets.php`
+- **Projet complet** : `/projet.php?slug=...`
+
+### Authentification
+- **Inscription** : `/register.php`
+- **Connexion** : `/login.php`
+- **Déconnexion** : `/logout.php`
+
+### Espace administrateur
+- **Dashboard** : `/admin/dashboard.php`
+- **Gestion des articles** : `/admin/articles.php`
+- **Gestion des projets** : `/admin/projets.php`
 
 ### Compte administrateur par défaut
-```
-Email : admin@blogestrie.com
-Mot de passe : password
-```
-
-⚠️ **Important** : Changez ces identifiants en production !
-
-### Créer du contenu
-
-1. **Connectez-vous** avec le compte admin
-2. Accédez au **menu Admin** dans le header
-3. Choisissez :
-   - **Gérer les articles** pour créer des articles
-   - **Gérer les projets** pour ajouter des projets à votre portfolio
-4. Utilisez l'**éditeur TinyMCE** pour mettre en forme votre contenu
-
-### Workflow de publication
-```
-Admin → Créer un article → Rédiger avec TinyMCE → Ajouter une image → Publier
-                                                    ↓
-                                        Visible sur la page Articles
-```
+- **Email** : `admin@blogestrie.com`
+- **Mot de passe** : `password`
+- ⚠️ **Changez ce mot de passe en production !**
 
 ---
 
 ## 📁 Structure du projet
 ```
 blog-estrie/
-├── admin/                      # Pages d'administration
-│   ├── dashboard.php           # Tableau de bord
-│   ├── articles.php            # Gestion des articles
-│   ├── create_article.php      # Création d'article (TinyMCE)
-│   ├── edit_article.php        # Modification d'article (TinyMCE)
-│   ├── delete_article.php      # Suppression d'article
-│   ├── projets.php             # Gestion des projets
-│   ├── create_projet.php       # Création de projet (TinyMCE)
-│   ├── edit_projet.php         # Modification de projet (TinyMCE)
-│   └── delete_projet.php       # Suppression de projet
+├── admin/                     # Espace administrateur
+│   ├── dashboard.php
+│   ├── articles.php
+│   ├── create_article.php
+│   ├── edit_article.php
+│   ├── delete_article.php
+│   ├── projets.php
+│   ├── create_projet.php
+│   ├── edit_projet.php
+│   └── delete_projet.php
 ├── assets/
-│   ├── css/                    # Fichiers CSS compilés
-│   ├── scss/                   # Fichiers Sass sources
-│   ├── js/                     # Scripts JavaScript
-│   └── images/                 # Images du thème
+│   ├── css/
+│   │   └── style.css          # CSS compilé depuis Sass
+│   ├── scss/
+│   │   └── custom.scss        # Styles personnalisés + Bootstrap
+│   ├── js/
+│   └── images/
 ├── includes/
-│   ├── database.php            # Connexion PDO à MySQL
-│   ├── session.php             # Gestion des sessions
-│   ├── header.php              # En-tête commun
-│   └── footer.php              # Pied de page commun
-├── uploads/                    # Images uploadées par les utilisateurs
-├── index.php                   # Page d'accueil
-├── articles.php                # Liste publique des articles
-├── article.php                 # Affichage d'un article
-├── projets.php                 # Portfolio public
-├── projet.php                  # Affichage d'un projet
-├── register.php                # Inscription
-├── login.php                   # Connexion
-├── profile.php                 # Profil utilisateur
-├── logout.php                  # Déconnexion
-├── .gitignore                  # Fichiers ignorés par Git
-├── package.json                # Dépendances npm
-├── PROGRESSION.md              # Documentation du développement
-└── README.md                   # Ce fichier
+│   ├── database.php           # Connexion PDO
+│   ├── session.php            # Gestion sessions et droits
+│   ├── header.php             # En-tête réutilisable
+│   └── footer.php             # Pied de page
+├── uploads/                   # Images uploadées
+│   ├── articles/
+│   ├── projets/
+│   └── tinymce/
+├── index.php                  # Page d'accueil
+├── register.php               # Inscription
+├── login.php                  # Connexion
+├── logout.php                 # Déconnexion
+├── profile.php                # Profil utilisateur
+├── articles.php               # Liste publique des articles
+├── article.php                # Article complet
+├── projets.php                # Portfolio
+├── projet.php                 # Projet complet
+├── adminer.php                # Administration BDD
+├── package.json               # Dépendances npm
+├── .gitignore
+├── PROGRESSION.md             # Documentation détaillée
+└── README.md                  # Ce fichier
 ```
 
 ---
@@ -239,74 +272,41 @@ blog-estrie/
 ## 📸 Captures d'écran
 
 ### Page d'accueil
-*Une présentation accueillante avec navigation claire*
+![Accueil](https://via.placeholder.com/800x400/2C5F2D/FFFFFF?text=Page+Accueil)
 
 ### Liste des articles
-*Grille responsive avec extraits et images*
+![Articles](https://via.placeholder.com/800x400/4A7C59/FFFFFF?text=Liste+Articles)
+
+### Dashboard admin
+![Dashboard](https://via.placeholder.com/800x400/5B9BD5/FFFFFF?text=Dashboard+Admin)
 
 ### Éditeur TinyMCE
-*Interface WYSIWYG professionnelle pour la rédaction*
-
-### Portfolio
-*Présentation des projets avec liens GitHub et démo*
-
-### Dashboard Admin
-*Centre de contrôle pour la gestion du contenu*
+![TinyMCE](https://via.placeholder.com/800x400/D4A574/FFFFFF?text=Editeur+TinyMCE)
 
 ---
 
-## 🔒 Sécurité
+## 🎨 Palette de couleurs Estrie
 
-Le projet intègre plusieurs mesures de sécurité :
-
-- ✅ **Mots de passe hashés** avec `password_hash()` et `password_verify()`
-- ✅ **Protection contre les injections SQL** avec PDO et requêtes préparées
-- ✅ **Protection XSS** avec `htmlspecialchars()` sur les données utilisateur
-- ✅ **Sessions sécurisées** avec gestion des droits
-- ✅ **Validation côté serveur** de tous les formulaires
-- ✅ **Upload d'images sécurisé** avec vérification de type et taille
-- ✅ **Protection CSRF** via tokens de session
-- ✅ **Pages admin protégées** par authentification
+| Couleur | Hex | Usage |
+|---------|-----|-------|
+| **Vert forêt** | `#2C5F2D` | Couleur principale |
+| **Brun automnal** | `#8B4513` | Secondaire |
+| **Vert nature** | `#4A7C59` | Succès |
+| **Bleu lac** | `#5B9BD5` | Info |
+| **Ocre automne** | `#D4A574` | Warning |
+| **Rouge érable** | `#A52A2A` | Danger |
 
 ---
 
-## 🎨 Personnalisation
+## 🚀 Améliorations futures
 
-### Changer les couleurs (thème Estrie)
-
-Modifiez `assets/scss/custom.scss` :
-```scss
-$primary: #2C5F2D;    // Vert forêt
-$secondary: #8B4513;  // Brun automnal
-$success: #4A7C59;    // Vert nature
-$info: #5B9BD5;       // Bleu lac
-```
-
-Puis recompilez :
-```bash
-npx sass assets/scss/custom.scss assets/css/style.css
-```
-
-### Watch automatique
-
-Pour recompiler automatiquement à chaque modification :
-```bash
-npx sass --quiet-deps --watch assets/scss/custom.scss:assets/css/style.css
-```
-
----
-
-## 🚧 Améliorations futures
-
-- [ ] Système de commentaires avec modération
-- [ ] Pagination pour les articles et projets
-- [ ] Recherche full-text
+- [ ] Système de commentaires sous les articles
+- [ ] Pagination des articles et projets
+- [ ] Recherche et filtres
 - [ ] Catégories et tags
-- [ ] Système de vues/statistiques
-- [ ] Export de contenu
+- [ ] Statistiques détaillées dans le dashboard
+- [ ] Newsletter
 - [ ] Mode sombre
-- [ ] Multi-langue (FR/EN)
-- [ ] API REST pour les données
 
 ---
 
@@ -314,42 +314,23 @@ npx sass --quiet-deps --watch assets/scss/custom.scss:assets/css/style.css
 
 **Nicolas Claverol**
 
-- 🌐 GitHub : [@NicolasClaverol](https://github.com/NicolasClaverol)
-- 📧 Email : [nicolas.claverol@gmail.com]
-
+- GitHub : [@NicolasClaverol](https://github.com/NicolasClaverol)
+- Repository : [blog-estrie](https://github.com/NicolasClaverol/blog-estrie)
 
 ---
 
-## 📝 Licence
+## 📜 Licence
 
-Ce projet est développé dans le cadre de la formation **Believemy - Projet Passerelle #2**.
-
-Libre d'utilisation pour un usage éducatif et personnel.
+Ce projet a été réalisé dans le cadre de la formation **Believemy** - Projet Passerelle #2.
 
 ---
 
 ## 🙏 Remerciements
 
-- **Believemy** pour la formation et le projet
-- **Bootstrap** pour le framework CSS
-- **TinyMCE** pour l'éditeur de texte
-- **Font Awesome** pour les icônes
-- La communauté open-source
+- **Believemy et Louis-Nicolas** pour la formation et les ressources
+- La magnifique région de l'**Estrie** pour l'inspiration
+- La communauté **Bootstrap** et **TinyMCE**
 
 ---
 
-## 📞 Support
-
-Pour toute question ou problème :
-
-1. Consultez la [documentation](PROGRESSION.md)
-2. Ouvrez une [issue](https://github.com/NicolasClaverol/blog-estrie/issues)
-3. Contactez-moi directement
-
----
-
-**⭐ Si ce projet vous a plu, n'hésitez pas à lui donner une étoile sur GitHub !**
-
----
-
-*Développé avec ❤️ et ☕ par Nicolas Claverol*
+**⭐ Si ce projet vous plaît, n'hésitez pas à lui donner une étoile sur GitHub !**
