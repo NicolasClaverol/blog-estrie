@@ -20,10 +20,10 @@ require_once 'includes/header.php';
     <!-- En-tête -->
     <div class="text-center mb-5">
         <h1 class="display-4 mb-3">
-            <i class="fas fa-newspaper text-primary"></i> Nos Articles
+            <i class="fas fa-newspaper text-primary"></i> Articles
         </h1>
         <p class="lead text-muted">
-            Découvrez l'Estrie et ses merveilles à travers nos articles
+            Découvrez l'Estrie et ses merveilles à travers mes articles
         </p>
     </div>
     
