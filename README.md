@@ -14,6 +14,11 @@ Blog et portfolio personnel sur la magnifique région de l'Estrie au Québec. Pr
 - [Structure du projet](#structure-du-projet)
 - [Auteur](#auteur)
 
+## 🎬 Vidéo de démonstration
+
+[▶️ Voir la démonstration complète du projet](https://youtu.be/68w1oRthuU8)
+
+*Vidéo non répertoriée - Accessible uniquement via ce lien*
 ---
 
 ## 🎯 Présentation
